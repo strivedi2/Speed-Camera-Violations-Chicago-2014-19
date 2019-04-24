@@ -25,4 +25,8 @@ According to [Chicago Data Portal](https://data.cityofchicago.org/Transportation
 
 ### Delving deeper into findings from EDA
 
-#### 1. Evaluating the relationship between number of violations and number of crashes at same locations
+#### 1. Does higher number of violations lead to lower number of crashes at same locations?
+
+#### 2. Are speed violators also likely to violate red lights?
+
+#### 3. Why do some locations have much higher violations than others- understanding through demographics
