@@ -15,4 +15,14 @@ According to [Chicago Data Portal](https://data.cityofchicago.org/Transportation
 
 #### Exploratory Data Analysis
 
-Exploratory data analysis of this dataset revealed that there is an overall decline in the total number of violations recorded from 2015 to 2018 (years for which complete data is available). 
+1. Exploratory data analysis of this dataset revealed that there is an overall decline in the total number of violations recorded from 2015 to 2018 (years for which complete data is available). 
+
+2. There is also an increase in the number of violations recorded per month, with highest number of violations recorded from the period between May to October.
+
+3. There are certain locations which have the highest number of recorded violations as compared to other locations.
+
+4. When plotting the number of violations on the city's map, northen part of the city has more locations with higher number of violations then the south.
+
+### Delving deeper into findings from EDA
+
+#### 1. Evaluating the relationship between number of violations and number of crashes at same locations
