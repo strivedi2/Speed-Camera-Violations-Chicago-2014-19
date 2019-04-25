@@ -24,6 +24,7 @@ According to [Chicago Data Portal](https://data.cityofchicago.org/Transportation
 4. When plotting the number of violations on the city's map, northen part of the city has more locations with higher number of violations then the south.
 
 ### Delving deeper into findings from EDA
+Mayor of Chicago- 
 
 #### 1. Does higher number of violations lead to lower number of crashes at same locations?
 
