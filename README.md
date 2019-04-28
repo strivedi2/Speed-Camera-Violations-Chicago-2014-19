@@ -1,4 +1,4 @@
-# Speed Camera Violations, City of Chicago 2014-19
+# Speed Camera Violations, City of Chicago 
 
 This file documents the analysis of **_Speed Camera Violations_** dataset provided by the City of Chicago. 
 The dataset can be accessed [here](https://data.cityofchicago.org/Transportation/Speed-Camera-Violations/hhkd-xvj4).
@@ -16,6 +16,8 @@ According to [Chicago Data Portal](https://data.cityofchicago.org/Transportation
 #### Exploratory Data Analysis
 
 1. Exploratory data analysis of this dataset revealed that there is an overall decline in the total number of violations recorded from 2015 to 2018 (years for which complete data is available). 
+
+![](Speed Camera Violations.png)
 
 2. There is also an increase in the number of violations recorded per month, with highest number of violations recorded from the period between May to October.
 
