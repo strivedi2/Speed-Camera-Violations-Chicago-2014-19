@@ -87,7 +87,7 @@ Next I plotted the number of speed enforcement cameras from 2015 - 2018 and the 
 
 In the above chart one can see that the number of cameras have remained constant, but the average number of violations have declined. This means that the speed enforcement program has a general declining trend. However, it is not clear if that is due to number of cameras. It also does not explain why the city decided to increase the number of installed cameras in 2018 when the number of violations continued to decline.
 
-I tried to explore this further by first plotting the number of cameras and the number of zip codes using bar charts. To identify the cameras that were added in 2018, I created a group of such cameras, renamed the group as 'Cameras added after 2018' and used that as a color to identify the additions in the chart below.
+I tried to explore this further by first plotting the number of cameras and the number of zip codes using bar charts. To identify the cameras that were added in 2018, I created a group of such cameras, renamed the group as 'Cameras added after 2018' and used that as a color to identify the additions in the chart below. These cameras are depicted in blue color.
 
 ![](Picture1.png)
 
