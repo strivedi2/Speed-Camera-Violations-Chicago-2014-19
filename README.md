@@ -120,14 +120,17 @@ I wanted to understand the success of the speed enforcement program by studying 
 
 I worked on these two datasests to understand the different attributes and performed data cleaning using Excel to get rid of unwanted columns. The original datasets had 48 columns ( Traffic Crashes) and 29 columns ( People dataset). 
 
+<br/>
 My cleaned Traffic Crashes had 15 columns including RD_No (unique id for each records, helpful to join the traffic crashes with people involved in the crash), Crash Date, Speed Limit, Primary Contributory Cause (to identify speed and non- speed related crashes), Injuries, Crash hour and time, and location related columns.
 
 ![](Crashes.png)
 
+<br/>
 The cleaned People dataset consisted of the following columns. I split the Crash Date column to separate time and date. I retained this field to be able to use this sheet independently if needed.
 
 ![](People.png)
 
+<br/>
 I tried to visualize traffic crashes and resulting fatalities on the map of Chicago and see whether there is any overlap with Speed Camera Violations. Below is a snapshot of my dashboard.
 
 ![](Map.png)
