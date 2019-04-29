@@ -99,9 +99,40 @@ The chart above depicts that there is an overall decline in the number of violat
 I also plan to group Zipcodes with highest number of violations and see their trend with respect to the number of cameras and compare that with Zipcodes which lower number of violations and see if that can provide conclusive findings.
 
 
-#### Q.3. Comparing Speed  data with Does higher number of violations lead to lower number of crashes at same locations?
+#### Q.3. Comparing Speed  data with Traffic Crashes - Does Speed Camera enforcements lead to reduction in number of traffic crashes and fatalities?
 
-- The declining trend can be compared with the number of crashes that occurred due to speeding in  areas with speed enforcement cameras during the same period. 
+I wanted to understand the success of the speed enforcement program by studying the number of crashes in Speed Enforcement zones over the same time period. Chicago Data Portal's [website](https://data.cityofchicago.org/) provides two datasets: 
+- [Traffic Crashes - Crashes](https://data.cityofchicago.org/Transportation/Traffic-Crashes-Crashes/85ca-t3if) : This dataset has information about each traffic crash on city streets within the City of Chicago limits and under the jurisdiction of Chicago Police Department (CPD) 
+- [Traffic Crashes - People](https://data.cityofchicago.org/Transportation/Traffic-Crashes-People/u6pd-qa9d) : This dataset contains information about people involved in a crash and if any injuries were sustained.
+
+I worked on these two datasests to understand the different attributes and performed data cleaning using Excel to get rid of unwanted columns. The original datasets had 48 columns ( Traffic Crashes) and 29 columns ( People dataset). 
+My cleaned Traffic Crashes had 15 columns including RD_No (unique id for each records, helpful to join the traffic crashes with people involved in the crash), Crash Date, Speed Limit, Primary Contributory Cause (to identify speed and non- speed related crashes), Injuries, Crash hour and time, and location related columns.
+
+![Crashes.png]
+
+The cleaned People dataset consisted of the following columns. I split the Crash Date column to separate time and date. I retained this field to be able to use this sheet independently if needed.
+
+![People.png]
+
+I tried to visualize traffic crashes and resulting fatalities on the map of Chicago and see whether there is any overlap with Speed Camera Violations. Below is a snapshot of my dashboard.
+
+![Map.png]
+
+
+
+One can see that locations with speed camera enforcement tend to have less number of fatalities as compared to other locations. 
+
+Unfortunately, the Traffic datasets can only be combined with Speed Camera violations dataset using Latitude and Longitude fields to map crashes that occured in Speed Camera Enforced locations. I plan to do that in the second phase of this analysis and be able to use attributes of the traffic crashes dataset to explore crashes due to speeding, crashes involving pedestrians and cyclists in these locations.
+
+** Implications **
+- Speed enforcement can lead to reduced fatalities during traffic accidents since speed is a big contributing factor in severity of an accident. The maps above indicate success of the program through reduced fatalities in speed enforcement locations.
+
+** Actions: **
+- Traffic Crashes dataset can be explored further to identify locations prone to accidents due to speeding and introduce speed camera enforcement to make them safer for public.
+
+
+
+
 
 
 
