@@ -24,7 +24,7 @@ According to [Chicago Data Portal](https://data.cityofchicago.org/Transportation
 
 3. When plotting the number of violations on the city's map, northen part of the city has more locations with higher number of violations then the south.
 
-<br/> 
+
 
 ## Delving deeper into findings from EDA
 In Part 2 of this analysis, a set of dashboards have been developed for the Mayor of Chicago, to reveal interesting findings from the Speed Camera Violations Dataset.
@@ -33,7 +33,7 @@ In Part 2 of this analysis, a set of dashboards have been developed for the Mayo
 
 After EDA, there were certain questions that I wanted to explore which  guided this phase of the analysis. These questions and the subsequent analysis are presented below.
 
-<br/>
+
 <br/>
 
 ### Q.1. Relationship between Red Light Camera Violations and Speed Camera Violations - __Are locations with Speed Camera violations also likely to have higher number of red light camera violations?__ 
@@ -70,7 +70,6 @@ Here again, one can see that there is no direct correlation between the number o
 
 This does however leave questions unanswered about why some zipcodes have highest number of violations. This can be explored further using demographics or traffic datasets. I plan to explore some datasets in the second phase of this analysis.
 
-<br/>
 <br/>
   
 ### Q.2. Number of Speed Enforcement Cameras and Speed Violations - Does the number of speed enforecement cameras help reduce the number of the violations?
@@ -112,7 +111,6 @@ The chart above depicts that there is an overall decline in the number of violat
 
 I also plan to group Zipcodes with highest number of violations and study the trend of number of violations with respect to the number of cameras; and compare that with Zipcodes with lower number of violations and see if that can provide any interesting findings.
 
-<br/>
 <br/>
 
 ### Q.3. Comparing Speed  data with Traffic Crashes - Does Speed Camera enforcement lead to reduction in number of traffic crashes and resulting fatalities?
