@@ -85,7 +85,7 @@ Next I plotted the number of speed enforcement cameras from 2015 - 2018 and the 
 
 ![](NumCam_NumVioltn.png)
 
-In the above chart one can see that the number of cameras have remained constant, but the average number of violations have declined. This means that the speed enforcement program has a general declining trend. However, it is not clear if that is due to number of cameras. It also not explain why the city decided to increase the number of installed cameras in 2018 when the number of violations continued to decline.
+In the above chart one can see that the number of cameras have remained constant, but the average number of violations have declined. This means that the speed enforcement program has a general declining trend. However, it is not clear if that is due to number of cameras. It also does not explain why the city decided to increase the number of installed cameras in 2018 when the number of violations continued to decline.
 
 I tried to explore this further by first plotting the number of cameras and the number of zip codes using bar charts. To identify the cameras that were added in 2018, I created a group of such cameras, renamed the group as 'Cameras added after 2018' and used that as a color to identify the additions in the chart below.
 
@@ -122,12 +122,14 @@ I wanted to understand the success of the speed enforcement program by studying 
 I worked on these two datasests to understand the different attributes and performed data cleaning using Excel to get rid of unwanted columns. The original datasets had 48 columns ( Traffic Crashes) and 29 columns ( People dataset). 
 
 <br/>
-My cleaned Traffic Crashes had 15 columns including RD_No (unique id for each records, helpful to join the traffic crashes with people involved in the crash), Crash Date, Speed Limit, Primary Contributory Cause (to identify speed and non- speed related crashes), Injuries, Crash hour and time, and location related columns.
+My cleaned Traffic Crashes dataset had 15 columns including RD_No (unique id for each records, helpful to join the traffic crashes with people involved in the crash), Crash Date, Speed Limit, Primary Contributory Cause (to identify speed and non- speed related crashes), Injuries, Crash hour and time, and location related columns.
+
 
 ![](Crashes.png)
 
 <br/>
-The cleaned People dataset consisted of the following columns. I split the Crash Date column to separate time and date. I retained this field to be able to use this sheet independently if needed.
+The cleaned People dataset consisted of the following columns. I split Crash Date column to separate time and date. I retained this field to be able to use this sheet independently if needed.
+
 
 ![](People.png)
 
@@ -138,12 +140,12 @@ I tried to visualize traffic crashes and resulting fatalities on the map of Chic
 
 
 
-One can see that locations with speed camera enforcement tend to have less number of fatalities as compared to other locations. 
+One can see that locations with speed camera enforcement and higher number of violations tend to have less number of fatalities as compared to other locations. 
 
-Unfortunately, the Traffic datasets can only be combined with Speed Camera violations dataset using Latitude and Longitude fields to map crashes that occured in Speed Camera Enforced locations. I plan to do that in the second phase of this analysis and be able to use attributes of the traffic crashes dataset to explore crashes due to speeding, crashes involving pedestrians and cyclists in these locations.
+Unfortunately, the Traffic datasets can only be combined with Speed Camera violations dataset using Latitude and Longitude fields to map crashes that occured in Speed Camera Enforced locations. I plan to do that in the second phase of this analysis and be able to use attributes of the Traffic Crashes dataset to explore crashes due to speeding, crashes involving pedestrians and cyclists in these locations.
 
 **Implications**
-- Speed enforcement can lead to reduced fatalities during traffic accidents since speed is a big contributing factor in severity of an accident. The maps above indicate success of the program through reduced fatalities in speed enforcement locations.
+- Speed enforcement can lead to reduced fatalities during traffic accidents since speed is a big contributing factor in severity of an accident. The maps above indicate success of the program through reduced fatalities in speed enforcement locations with higher number of violations.
 
 **Actions**
 - Traffic Crashes dataset can be explored further to identify locations prone to accidents due to speeding and introduce speed camera enforcement to make them safer for public.
