@@ -16,7 +16,7 @@ According to [Chicago Data Portal](https://data.cityofchicago.org/Transportation
 
 ### Exploratory Data Analysis (EDA)
 
-Link to my Tableau public URL:
+[**Link to my Tableau public URL:**](https://public.tableau.com/views/SpeedCameraViolations_Chicago_2014-19/Story1?:embed=y&:display_count=yes) 
 
 1. Exploratory data analysis of this dataset revealed that there is an overall decline in the total number of violations recorded from 2015 to 2018 (years for which complete data is available). 
 
@@ -29,7 +29,7 @@ Link to my Tableau public URL:
 ## Delving deeper into findings from EDA
 In Part 2 of this analysis, a set of dashboards have been developed for the Mayor of Chicago, to reveal interesting findings from the Speed Camera Violations Dataset.
 
-**Link to my Tableau public URL:** 
+[**Link to my Tableau public URL:**](https://public.tableau.com/shared/CMRF63GT4?:display_count=yes) 
 
 After EDA, there were certain questions that I wanted to explore which  guided this phase of the analysis. These questions and the subsequent analysis are presented below.
 
