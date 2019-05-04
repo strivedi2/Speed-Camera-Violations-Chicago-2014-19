@@ -152,6 +152,35 @@ Unfortunately, the Traffic datasets can only be combined with Speed Camera viola
 
 
 
+## Part 3 : Documentation of recreating the dashboard
+
+### Dashboard 1: Comparison between Red Light and Speed Camera Violations
+**Combining data sources**
+Link to data sources: 
+
+Python code for joining the datasets
+
+- Use filter on Data Source page to exclude null values in Violation Date.
+- Used filter to remove years 2014 and 2019 for which complete data was not available
+- Changed the axis- Date now on Columns and Number of violations on rows. This made sense because this is a trend of violations. 
+- Is using a line instead of bar chart was more appropriate. ?
+Decide for yourself
+
+<insert both charts>
+
+- Rotate labels by right clicking and selecting Rotate Labels to prevent any scrunching when chart is added to a dashboard.
+- Changed sheet name to P_No of violations over years
+- Changed title to be the warrant/ claim for the chart and added the previous title and description under Caption. Double click on the chart title and edit text in the dialog box that appears. Use the options available for formatting like reducing font size which is useful when adding charts to dashboards, I have use font size 11 for title and formatted text in bold.
+- Edit filter title to Year / Hide filter card
+- Edited the axis in the prev chart to ensure the comparison between the two is visible. Fixed axis from 0- 8 M.
+- Remove Gridlines
+
+#### Moving Average Chart
+- Calculate moving average
+- hide year filter card
+- Rename sheet and add caption
+- Add Trend line--> linear to Moving average chart
+
 
 
 
