@@ -160,6 +160,8 @@ Link to data sources:
 
 Python code for joining the datasets
 
+Excel Cleaning: remove datetime from violation date using Text to Columns
+
 - Use filter on Data Source page to exclude null values in Violation Date.
 - Used filter to remove years 2014 and 2019 for which complete data was not available
 - Changed the axis- Date now on Columns and Number of violations on rows. This made sense because this is a trend of violations. 
