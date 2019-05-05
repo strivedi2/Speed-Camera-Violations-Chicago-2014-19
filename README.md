@@ -158,30 +158,60 @@ Unfortunately, the Traffic datasets can only be combined with Speed Camera viola
 **Combining data sources**
 Link to data sources: 
 
-Python code for joining the datasets
+**Python code for joining the datasets**
 
-Excel Cleaning: remove datetime from violation date using Text to Columns
+**Adding Data Sources to Python**
+- Editing datasources by replacing xx and removing Traffic Crashes.
+- Defining names of fields --> Red Camera Violations and Speed Camera Violations
+- Creating Calculated fields--> Num Speed Camera
+- Categorizing Dimensions and Measures
 
-- Use filter on Data Source page to exclude null values in Violation Date.
-- Used filter to remove years 2014 and 2019 for which complete data was not available
-- Changed the axis- Date now on Columns and Number of violations on rows. This made sense because this is a trend of violations. 
-- Is using a line instead of bar chart was more appropriate. ?
-Decide for yourself
+#### Preparing Chart1: Comparison between Speed Camera and Red Light Camera Violations over the years
 
-<insert both charts>
-
-- Rotate labels by right clicking and selecting Rotate Labels to prevent any scrunching when chart is added to a dashboard.
+**Steps to replicate the chart**
+- Drag Violation Date field to columns since we are observing a trend, rotate lables if not rotated already to improve readability.
+- Click on Year and select Show Filter to generate a filter card on the right side and use that to filter out years 2014 and 2019 from the analysis for which complete data is not available.
+- Drag the renamed field Speed Camera Violations and place it under rows. Drag second renamed field, Red  Light Violations and hover it on the y axis until the cursor shows two green bars which implies shared axes. This lets me display the number of Speed Camera Violations next to Red Light Violations and show the difference in bar size more clearly as compared to the chart in Part 2. 
+- At this step Tableau also creates two new entities- Measure names and Measure Values. Measure names is available under the Filter Card on the right and Measure Values on Rows.
+- Edit the name on the y-axis from Values to "Number of Violations (in thousands)".
+- To change the color of the charts, hold down 'Command' button on MacBoock (Ctrl for Windows) and drag the Measure names from Columns to Color. Click on the Color button and then click on Edit Colors to see the option for changing colors for the bars. I have chosen blue for Speed Camera Violations and red for Red Light Violations.
+- Click on the dropdown button on 'Measure name' filter card on the right, and select Edit Title. Enter the new title as 'Violation Type'. 
 - Changed sheet name to P_No of violations over years
 - Changed title to be the warrant/ claim for the chart and added the previous title and description under Caption. Double click on the chart title and edit text in the dialog box that appears. Use the options available for formatting like reducing font size which is useful when adding charts to dashboards, I have use font size 11 for title and formatted text in bold.
-- Edit filter title to Year / Hide filter card
-- Edited the axis in the prev chart to ensure the comparison between the two is visible. Fixed axis from 0- 8 M.
+- Edit filter title to Year / Hide filter card.
 - Remove Gridlines
 
-#### Moving Average Chart
-- Calculate moving average
-- hide year filter card
+The chart currently looks like this:
+< insert chart image>
+
+I want to remove the titles in the bottom axes because the information is represented using the Violation Type legend on the right. To remove the axes: right click on the axis and click on Show Header to deselect it. This hides the bottom axes and makes the chart look cleaner.
+
+- The bottom axis which contains a repetition of the 
+
+<insert before and after charts>
+
+
+#### Chart 2: Moving Average Chart
+
+
+- Drag Violation Date to Columns and Speed Camera Violations to Rows. Click on SUM(Speed Camera Violations) to display the dropdown menu and change Measure (SUM) to Average.
+- Drag Red Light Violations to the y axis and hover until two green bars are diplayed and create a combined axes chart. Observe the same Measure names and Measure Values are created by Tableau as in the previous chart. 
+- Follow same steps as mentioned in Chart 1 to add and edit the color of the lines. Oh yes! since this is going to be a moving avergae chart make sure the Chart type is set to 'Line'.
+- Edit title and add "But the average number of speed violations have continued to decline over the years".
+- Rotate the x-axis.
+- Hide year filter card
 - Rename sheet and add caption
-- Add Trend line--> linear to Moving average chart
+
+- **Calculating moving average**: On Measure Values card, click on the button AVG(Speed Camera Violations) to see the dropdown menu and click on Quick Table Calculation. Select Moving Average from the list of calculations available. Repeat this step for AVG(Red Light Violations).
+By adding moving average calculations, a smoother line is observed in the chart for average Speed Camera and Red Light Violations committed over the years. 
+
+*Additional Tip**: Moving average calculation can be edited by 
+
+- **Add Trend line**: On the left pane of the worksheet, click on Analytics tab and press down on Trend Line to drag it to the chart. Select Linear from the options and add trend line to the moving average. Hover over the trend line to see the R-squared and P-values of the trend line. Observe the P-value for trend line of the Speed Camera violations Moving Average line. See how the P-values is <0.0001. This implies that this is a significant change and cannot be attributed to mere chance. Thus, we conclude that average number of Speed Camera Violations have continued to decline since 2014 (year from which data is available). At the same time, P-value for the trend line for Red Light Violations has a higher value of 0.111 which is not statistically significant. Thus, we can also remove this trend line since it does not attribute to a statistically significant change in Red Light violations.
+Also, notice that the difference in the average number of red light violations committed. A flat trend indicates that there will always be some red light violations committed. This could be because of people who might be rushing to get somewhere.
+
+
+- --> exponential since this looks like an  to Moving average chart
 
 
 
