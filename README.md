@@ -205,14 +205,20 @@ I want to remove the titles in the bottom axes because the information is repres
 - **Calculating moving average**: On Measure Values card, click on the button AVG(Speed Camera Violations) to see the dropdown menu and click on Quick Table Calculation. Select Moving Average from the list of calculations available. Repeat this step for AVG(Red Light Violations).
 By adding moving average calculations, a smoother line is observed in the chart for average Speed Camera and Red Light Violations committed over the years. 
 
-*Additional Tip**: Moving average calculation can be edited by 
+*Additional Tip**: Moving average calculation can be modified to change the years for which the average is calculated by clicking on Edit Table Calculation in the dropdown menu. And updating the required year in the Previous and Next fields. 
 
 - **Add Trend line**: On the left pane of the worksheet, click on Analytics tab and press down on Trend Line to drag it to the chart. Select Linear from the options and add trend line to the moving average. Hover over the trend line to see the R-squared and P-values of the trend line. Observe the P-value for trend line of the Speed Camera violations Moving Average line. See how the P-values is <0.0001. This implies that this is a significant change and cannot be attributed to mere chance. Thus, we conclude that average number of Speed Camera Violations have continued to decline since 2014 (year from which data is available). At the same time, P-value for the trend line for Red Light Violations has a higher value of 0.111 which is not statistically significant. Thus, we can also remove this trend line since it does not attribute to a statistically significant change in Red Light violations.
+
 Also, notice that the difference in the average number of red light violations committed. A flat trend indicates that there will always be some red light violations committed. This could be because of people who might be rushing to get somewhere.
 
 
-- --> exponential since this looks like an  to Moving average chart
+#### Chart 3: Violations in zipcodes
+- Plot Average number of Speed violations against zipcode x. Right click on the chart and select View Data. From the table that appears, click on Export All and select the folder where you want to create the csv file for this dataset. Repeat the same for average number of Red Light violations.
+- Now combine the number of Violations across Zipcodes using Jupyter notebook. I am doing this exercise because I realized that if you perform a join in tableau using Violation Date and Zipcode as columns for joining, the resulting number of rows are not accurate. Same holds for trying to join the two datasets on Violation Date. Performing the join using Jupyter notebook helped me understand these errors which occur due to duplication of rows. (**Tip**: Save the exported files as CSV UTF-8 (Comma Delimited) file to successfully read the files on Jupyter notebook.)
 
+At the same time, using combined dataset with accurate number of rows does not provide the chart I am intending to replicate from the previous week because the Zipcode y values against Zipcode x values are null and vice versa. 
+- 
+Zip codes with the highest number of speed camera violations might not necessarily have the highest number of red light violations. 
 
 
 
