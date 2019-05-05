@@ -158,9 +158,15 @@ Unfortunately, the Traffic datasets can only be combined with Speed Camera viola
 
 Compared to my previous dashboard on this analysis, I have made the following changes:
 
-1. I have merged the datasets using Jupyter notebook to ensure accurate records are reflected in my visualizations. Tableau joins might not be the best option when working with datasets with little common attributes.
-2. 
+1. I have merged the datasets using Jupyter notebook to ensure accurate records are reflected in my visualizations. Tableau joins might not be the best option when working with datasets with little or no common attributes. For Tableau beginners, Tableau joins might not be the best way to combine data from multiple sources. I realized the difference in my joined datasets when I performed the same merge using Python and tried to recreate it in Tableau. Also , an added benefit is speed of data processing and not unnecessarily slowing down my Tableau desktop file due to live/ extract join based data sources.
 
+2. The second major change I made was using combined axis charts to replace my previous charts.
+
+3. I also added two charts to the analysis. One is on the trend of average speed and red light violations over the time period of study. This not only allowed me to use some cool analytics features in Tableau but also present an interesting finding in addition to the ones presented previously.
+
+4. Lastly, based on my previous analysis I was trying to understand whether any correlation existed by speed and red light violations and that is another addition to this week's dashboard.
+
+So below is a detailed walkthrough of each chart, including preparing data sources using Jupyter notebook and creating the chart and the dashboard for the first finding.
 
 **Combining data sources**
 Link to data sources: 
