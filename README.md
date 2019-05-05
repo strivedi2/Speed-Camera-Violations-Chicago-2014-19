@@ -223,9 +223,10 @@ I want to remove the titles in the bottom axes because the information is repres
 - **Calculating moving average**: On Measure Values card, click on the button AVG(Speed Camera Violations) to see the dropdown menu and click on Quick Table Calculation. Select Moving Average from the list of calculations available. Repeat this step for AVG(Red Light Violations).
 By adding moving average calculations, a smoother line is observed in the chart for average Speed Camera and Red Light Violations committed over the years. 
 
-*Additional Tip**: Moving average calculation can be modified to change the years for which the average is calculated by clicking on Edit Table Calculation in the dropdown menu. And updating the required year in the Previous and Next fields. 
+**Additional Tip**: Moving average calculation can be modified to change the years for which the average is calculated by clicking on Edit Table Calculation in the dropdown menu. And updating the required year in the Previous and Next fields. 
 
 - **Add Trend line**: On the left pane of the worksheet, click on Analytics tab and press down on Trend Line to drag it to the chart. Select Linear from the options and add trend line to the moving average. Hover over the trend line to see the R-squared and P-values of the trend line. Observe the P-value for trend line of the Speed Camera violations Moving Average line. See how the P-values is <0.0001. This implies that this is a significant change and cannot be attributed to mere chance. Thus, we conclude that average number of Speed Camera Violations have continued to decline since 2014 (year from which data is available). At the same time, P-value for the trend line for Red Light Violations has a higher value of 0.111 which is not statistically significant. Thus, we can also remove this trend line since it does not attribute to a statistically significant change in Red Light violations.
+- Edit the transparency of the Moving Average lines: Select Color and reduce transparency to 40%. Now the moving average lines are dimly visible in the background and trend lines are highlighted. I did this to focus on the difference in trends for Speed and Red Light violations. The former is declining over the years whereas latter has a stable trend. This again marks a difference in the behavior of these violations.
 
 Also, notice that the difference in the average number of red light violations committed. A flat trend indicates that there will always be some red light violations committed. This could be because of people who might be rushing to get somewhere.
 - Edit y axis name to 'Average Violations'.
@@ -352,7 +353,7 @@ From the above data, one can clearly see that the average temperature is highest
 Now let us edit our chart further to improve our message.
 
 - Edit Title for Y axis to Average Speed Violations and remove gridlines. For rotating lables we, will first see how the chart fits into dashboard and decide whether to rotate the labels or not.
-- We will now add Quick Table Calculations to show the difference in number of cameras and violations for each month. Click on the Measures in Rows and click on Quick Table Calculation in the drop down. Select Percent Difference to add a percent change from the previous number. Now we can see that the chart changes to represent the percent change over months.
+- We will now add Quick Table Calculations to show the difference in number of cameras and violations for each month. Click on the Measures in Rows and click on Quick Table Calculation in the drop down. Select Percent Difference to add a percent change from the previous number. Now we can see that the chart changes to represent the percent change over months. Refer this [link](https://onlinehelp.tableau.com/current/pro/desktop/en-us/calculations_tablecalculations_quick.htm) for more documentation.
 
 ![](QuickTableCalc.png)
 
@@ -382,6 +383,9 @@ I then added the sheet containing the chart created above to the dashboard and e
 And finally the dashboard looks like this,
 
 ![](Dashboard3.png)
+
+
+And finally, here again is the link to my Tableau public profile for this week's analysis: <add link>
 
 
 
