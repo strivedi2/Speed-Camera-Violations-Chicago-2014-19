@@ -155,6 +155,13 @@ Unfortunately, the Traffic datasets can only be combined with Speed Camera viola
 ## Part 3 : Documentation of recreating the dashboard
 
 ### Dashboard 1: Comparison between Red Light and Speed Camera Violations
+
+Compared to my previous dashboard on this analysis, I have made the following changes:
+
+1. I have merged the datasets using Jupyter notebook to ensure accurate records are reflected in my visualizations. Tableau joins might not be the best option when working with datasets with little common attributes.
+2. 
+
+
 **Combining data sources**
 Link to data sources: 
 
@@ -168,6 +175,8 @@ Link to data sources:
 
 #### Preparing Chart1: Comparison between Speed Camera and Red Light Camera Violations over the years
 
+Compared to my previous chart, I have used combined axis charts to better explain the difference between Speed and Red light violations. 
+
 **Steps to replicate the chart**
 - Drag Violation Date field to columns since we are observing a trend, rotate lables if not rotated already to improve readability.
 - Click on Year and select Show Filter to generate a filter card on the right side and use that to filter out years 2014 and 2019 from the analysis for which complete data is not available.
@@ -179,7 +188,8 @@ Link to data sources:
 - Changed sheet name to P_No of violations over years
 - Changed title to be the warrant/ claim for the chart and added the previous title and description under Caption. Double click on the chart title and edit text in the dialog box that appears. Use the options available for formatting like reducing font size which is useful when adding charts to dashboards, I have use font size 11 for title and formatted text in bold.
 - Edit filter title to Year / Hide filter card.
-- Remove Gridlines
+- Remove gridlines by right click anywhere on the chart and selecting Format from the dropdown. Click on the 'Lines' icon and click on Rows tab. Against Gridlines select none to remove the gridlines on rows.
+
 
 The chart currently looks like this:
 < insert chart image>
@@ -210,15 +220,85 @@ By adding moving average calculations, a smoother line is observed in the chart 
 - **Add Trend line**: On the left pane of the worksheet, click on Analytics tab and press down on Trend Line to drag it to the chart. Select Linear from the options and add trend line to the moving average. Hover over the trend line to see the R-squared and P-values of the trend line. Observe the P-value for trend line of the Speed Camera violations Moving Average line. See how the P-values is <0.0001. This implies that this is a significant change and cannot be attributed to mere chance. Thus, we conclude that average number of Speed Camera Violations have continued to decline since 2014 (year from which data is available). At the same time, P-value for the trend line for Red Light Violations has a higher value of 0.111 which is not statistically significant. Thus, we can also remove this trend line since it does not attribute to a statistically significant change in Red Light violations.
 
 Also, notice that the difference in the average number of red light violations committed. A flat trend indicates that there will always be some red light violations committed. This could be because of people who might be rushing to get somewhere.
+- Edit y axis name to 'Average Violations'.
+- Edit filter Card Measure names and rename it to Violation Type.
+- Edit Legend names to 
 
 
 #### Chart 3: Violations in zipcodes
 - Plot Average number of Speed violations against zipcode x. Right click on the chart and select View Data. From the table that appears, click on Export All and select the folder where you want to create the csv file for this dataset. Repeat the same for average number of Red Light violations.
-- Now combine the number of Violations across Zipcodes using Jupyter notebook. I am doing this exercise because I realized that if you perform a join in tableau using Violation Date and Zipcode as columns for joining, the resulting number of rows are not accurate. Same holds for trying to join the two datasets on Violation Date. Performing the join using Jupyter notebook helped me understand these errors which occur due to duplication of rows. (**Tip**: Save the exported files as CSV UTF-8 (Comma Delimited) file to successfully read the files on Jupyter notebook.)
+- Now combine the number of Violations across Zipcodes using Jupyter notebook. I am doing this exercise because I realized that if you perform a join in tableau using Violation Date and Zipcode as columns for joining, the resulting number of rows are not accurate. Same holds for trying to join the two datasets on Violation Date. Performing the join using Jupyter notebook helped me understand these errors which occur due to duplication of rows. At the same time, using combined dataset with accurate number of rows does not provide the chart I am intending to replicate from the previous week because the Zipcode y values against Zipcode x values are null and vice versa. 
 
-At the same time, using combined dataset with accurate number of rows does not provide the chart I am intending to replicate from the previous week because the Zipcode y values against Zipcode x values are null and vice versa. 
-- 
-Zip codes with the highest number of speed camera violations might not necessarily have the highest number of red light violations. 
+Code snippet below:
+
+I performed a left join since I am interested in Zipcodes where Speed Camera VIolations have been recorded and study Red Light violations in these zipcodes.
+
+
+(**Tip**: Save the exported files as CSV UTF-8 (Comma Delimited) files to successfully read the files on Jupyter notebook.)
+
+
+- Create a new worksheet and add th new csv files as a data source. We will be using this file for charts 3 and 4. Delete or hide the previous worksheet since we will not be using it.
+
+- Rename dimension Zipcode x to Zipcodes, and measures to Average Red Light Violations and Average Speed Camera Violations. This step can be optional since these changes can be made in the chart as well. But I have adopted a practice to rename dimensions and measures to avoid any confusion.
+- Drag ZipCodes to columns, Average Speed Camera Violations to Rows and use the same steps followed above for a combined axis chart and add Red Light Violations. Note that there is only one value against each zipcode, hence using Sum, Average, Minimum or Maximum will all return the same average number in the original data source.
+- Click on the descending order sort icon on the top or on the Y-axis to sort zipcodes by highest average speed violations. 
+- Click on nulls on the chart and click on Filter to remove null values.
+- Add Measure names to color and edit the colors to use the same color scheme used in previous charts for speed camera and red light violations.
+Note that we now get a chart with single stacked bars for speed camere and red light violations and shows that Zipcodes with highest speed violations might not necessarily have the highest red light violations. Thus there appears to be no correlation between the two.
+
+< insert chart image>
+
+
+Let's make remaining changes to the chart.
+
+- Edit y axis and rename it to 'Average Violations'.
+- Hide field label Zipcodes using right click and selecting 'Hide Field Label for Column...' option.
+- Rotate x axis label if it does not occur automatically to fit the chart on the worksheet.
+- Edit title of Measure name filter card to Violation Type and edit legend alisases to Speed Camera and Red Light. 
+- Remove gridlines as done for previous charts.
+
+
+
+
+#### Chart 4: Scatter Plot between Average Speed Violations and Average Red Light Violations in Zipcodes
+
+- Use ZipCode violations as data source for the worksheet.
+- Drag Average Speed Camera Violations to Columns and Average Red Light Violations to Rows to create a scatter plot. 
+- Drag ZipCodes on Label and Average Speed Violations on Size. Edit the shape to circle. This populates data on the scatter plot by adding circles based on average number of speed violations committed.
+- Click on nulls on the chart and filter out null values.
+- Click on the ZipCodes filter card and select Hide Card to remove it from the chart.
+- Click on Tooltip to edit aliases for values displayed when a user hovers on a circle on the chart. Use Zipcode, Average Speed Violations and Average Red Light Violations in the same order as aliases. (**Tip**) Order can be changed by cutting and pasting the entire row in the desired order.) 
+- Remove gridlines.
+- Edit title of the Speed Violations size card on the right to 'Average Speed Violations'.
+
+
+< chart image>
+
+From the scatter plot one can clearly see there is no correlation between speed camera violations and red light violations in a zipcode. Zipcodes with the highest and lowest speed violations have nearly the same average number of red light violations. If there was a correlation then as the average number of speed violations would increase, the number of red light violations would increase too. Thus there would be more circles as one would move to right and top of the chart. But that relationship does not exist here.
+
+
+- Add title 'There is no correlation between Speed violations and Red Light Violations among zip codes where these violations occurred'.
+- Add Caption 'Average Speed Camera and Red Light Camera Violations across ZipCodes, 2014-19'. 
+
+#### Create Dashboard for first finding
+
+From the analysis and visualizations created above we see that there are no common grounds between the two automated enforcement programs run by the City of Chicago- Speed Camera and Red Light. There is a stark difference in the number of these violations committed and the overall trend over time period of study. 
+
+Additionally, there is no relationship between zipcodes with high speed violations and their corresponding red light violations. Thus  these two programs are very distinct. Even though they are under the same umbrella of automated enforcement, they need to be treated differently. This is most important from a fund allocation perspective. Maybe the city can consider dividing the programs into disitnct intiatives to ensure proper fund allocation to meet each program's needs. 
+
+**Creating the dashboard**
+To create a dashboard for this finding, open a new dashboard worksheet in Tableau. Change the Dashboard layout to Floating which allows the user to resize and freely place charts on the dashbord. 
+- Select P_No of violations over years sheet and drag it onto the dashboard. Resize to fit it to the upper left corner below title. Chart can be moved around the dahsboard by clicking on the sheet until the drag icon appears.
+- Add the remaining worksheets in the same order of charts created above. I have added the charts in left to right direction of reading.
+- Hide all filter and legend cards except Violation Type legend card from chart 3 and Average number of violations legend from Chart 4.
+- Add title to the dashboard with a clear message about the finding. 
+- Add captions to charts if not displayed automatically. I have not added Caption for the Average Violations by Zipcode chart since the chart seemed self-explantory and adding Caption was taking a lot of space on the dashboard.
+- Captions should be center aligned to display right below the x-axis. Looked better than left alignment.
+- Chart titles should be font size 11. I removed bold formatting from the titles and found that the dashboard looked more clean and easier to read. I didn't want to the get distracted by individual chart titles and not read the overarching message of the dashboard.
+- Axis labels can be formatted by right clicking on the label and selecting Format. In the Axis Option, under Title, click on Font and change font size to 8.
+- Move the legends to the right, and onto white space. Since I have used the same color scheme for all my charts, one legend would suffice to explain the difference in colors. 
+Add the four charts created above to a dashboard.
+
 
 
 
