@@ -166,6 +166,8 @@ Compared to my previous dashboard on this analysis, I have made the following ch
 
 4. Lastly, based on my previous analysis I was trying to understand whether any correlation existed by speed and red light violations and that is another addition to this week's dashboard.
 
+To summarize, the data source and merging process was quite an adventure. I will not bother you with the pain I had to go through to understand how data sources behave in Tableau and the fact that you need to re-do all previous charts if the data source is drastcially changed. But, let's focus on the positive. I got to create charts that I believe are more insightful and appealing than the previous version and I learned what not to do when working with multiple data sources on Tableau.
+
 So below is a detailed walkthrough of each chart, including preparing data sources using Jupyter notebook and creating the chart and the dashboard for the first finding.
 
 **Combining data sources**
