@@ -504,13 +504,11 @@ The final dashboard after editing the captions and titles can be seen below:
 ![](FinalDashboard3.png)
 
 
-
 Before publishing the Tableau file, last step is to update the Story. The best part of this process is that all updates in the dashboards reflect in the story already. I will just edit the Captions and title of the Story. 
 
-To edit the caption just click on the text and start typing. 
+To edit the caption just click on the text and start typing. In the title, I will just edit the years to 2014-2019.
 
-
-And finally, here again is the link to my Tableau public profile for this week's analysis: <add link>
+And finally, here again is the link to all my Tableau public profile for this version: [Link to Second Version](<add link>)
 
 
 
