@@ -492,40 +492,22 @@ Since, I had few charts mapped to the original dashboard created in the previous
 
 ![](Dashboard3.png)
 
-So I changed the color of Camera Unchanged to light orange in the worksheet. Also to ensure we have a legend for Chart 2 I will increase transparency 
+In order to improve appearance of the dashboard, I made the following changes:
+
+- Changed the color of Camera Unchanged to light orange in the worksheet. Also to ensure we have a legend for Chart 2 I will increase transparency to 40%.
+- Also changed the title of the legend to Zipcode group.
+- Moved the charts to accomodate the legends and visualizations and ensured I followed the same format for all chart titles and captions as done for previous dashboards.
+- And finally changed the title of the dashboard to communicate a clear message. 
+
+The final dashboard after editing the captions and titles can be seen below:
+
+![](FinalDashboard3.png)
 
 
 
+Before publishing the Tableau file, last step is to update the Story. The best part of this process is that all updates in the dashboards reflect in the story already. I will just edit the Captions and title of the Story. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+To edit the caption just click on the text and start typing. 
 
 
 And finally, here again is the link to my Tableau public profile for this week's analysis: <add link>
