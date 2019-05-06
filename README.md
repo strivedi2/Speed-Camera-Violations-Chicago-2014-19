@@ -205,25 +205,24 @@ I want to remove the titles in the bottom axes because the information is repres
 #### Chart 2: Moving Average Chart
 
 - Drag Violation Date to Columns and Speed Camera Violations to Rows. Click on SUM(Speed Camera Violations) to display the dropdown menu and change Measure (SUM) to Average.
-- Drag Red Light Violations to the y axis and hover until two green bars are diplayed and create a combined axes chart. Observe the same Measure names and Measure Values are created by Tableau as in the previous chart. 
-- Follow same steps as mentioned in Chart 1 to add and edit the color of the lines. Oh yes! since this is going to be a moving avergae chart make sure the Chart type is set to 'Line'.
-- Edit title and add "But the average number of speed violations have continued to decline over the years".
+- Drag Red Light Violations to the y axis and hover until two green bars are diplayed and create a combined axes chart. Observe the same Measure names and Measure Values are created by Tableau as in the previous chart.
+- Follow same steps as mentioned in Chart 1 to add and edit the color of the lines. And since this is going to be a moving avergae chart make sure the Chart type is set to 'Line'.
+- Edit title and add "But the average speed violations continue to decline over the years whereas red light violations have a stable trend".
 - Rotate the x-axis.
 - Hide year filter card
 - Rename sheet and add caption
 
 - **Calculating moving average**: On Measure Values card, click on the button AVG(Speed Camera Violations) to see the dropdown menu and click on Quick Table Calculation. Select Moving Average from the list of calculations available. Repeat this step for AVG(Red Light Violations).
-By adding moving average calculations, a smoother line is observed in the chart for average Speed Camera and Red Light Violations committed over the years. 
-
-**Additional Tip**: Moving average calculation can be modified to change the years for which the average is calculated by clicking on Edit Table Calculation in the dropdown menu. And updating the required year in the Previous and Next fields. 
+By adding moving average calculations, a smoother line is observed in the chart for average Speed Camera and Red Light Violations committed over the years. **Additional Tip**: Moving average calculation can be modified to change the years for which the average is calculated by clicking on Edit Table Calculation in the dropdown menu. And updating the required year in the Previous and Next fields. 
 
 - **Add Trend line**: On the left pane of the worksheet, click on Analytics tab and press down on Trend Line to drag it to the chart. Select Linear from the options and add trend line to the moving average. Hover over the trend line to see the R-squared and P-values of the trend line. Observe the P-value for trend line of the Speed Camera violations Moving Average line. See how the P-values is <0.0001. This implies that this is a significant change and cannot be attributed to mere chance. Thus, we conclude that average number of Speed Camera Violations have continued to decline since 2014 (year from which data is available). At the same time, P-value for the trend line for Red Light Violations has a higher value of 0.111 which is not statistically significant. Thus, we can also remove this trend line since it does not attribute to a statistically significant change in Red Light violations.
 - Edit the transparency of the Moving Average lines: Select Color and reduce transparency to 40%. Now the moving average lines are dimly visible in the background and trend lines are highlighted. I did this to focus on the difference in trends for Speed and Red Light violations. The former is declining over the years whereas latter has a stable trend. This again marks a difference in the behavior of these violations.
 
+![](Chart1.2.png)
+
 Also, notice that the difference in the average number of red light violations committed. A flat trend indicates that there will always be some red light violations committed. This could be because of people who might be rushing to get somewhere.
-- Edit y axis name to 'Average Violations'.
+- Edit y axis title to 'Average Violations'.
 - Edit filter Card Measure names and rename it to Violation Type.
-- Edit Legend names to 
 
 
 #### Chart 3: Violations in zipcodes
