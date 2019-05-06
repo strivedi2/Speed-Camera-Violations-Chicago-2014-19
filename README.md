@@ -309,7 +309,8 @@ For this dashboard, I have tried to delve deeper to see if I can identify reason
 
 On City of Chicago's website, there is a list of Camera IDs and the zones they are located in ([link](https://www.chicago.gov/content/dam/city/depts/cdot/Red%20Light%20Cameras/2018/Chicago_Active_Camera_Schedule_090518.pdf)). I used this pdf to extract Zone based information. Cleaned the excel file using Jupyter notebook and added a new Zone Type column to classify Park and School Zones.
 
-Jupyter notebook code below:
+Snapshot of my code below:
+![](ZonetypeCode.png)
 
 
 I then created a new worksheet in my Tableau file and added this file as a new data source using New Data Source icon. Let us now prepare charts for this dashboard.
@@ -318,13 +319,11 @@ I then created a new worksheet in my Tableau file and added this file as a new d
 
 For this chart we are trying to plot violations by Zone type across months to see if the spike can be explained by using Zone type as a new dimension. 
 - Drag the Violation Date to Columns and change type from Year to Month by clicking on the button to display drop down menu and selecting Month from the available options. This results in a x-axis with month as point of analysis. 
-
-- Next, drag Violations from Measure to columns and change measure to Average to display the monthly average trend of violations. This is a trend over time months so we will again be using line to represent the trend and hence have chosen to show Time (months) on x-axis and violations on y-axis.
-
+- Next, drag Violations from Measure to columns and change measure to Average to display the monthly average trend of violations. This is a trend over time so we will again be using line to represent the trend and hence have chosen to show Time (months) on x-axis and violations on y-axis.
 - Add Zone Type to color by dragging Zone type dimension over color. I have changed the color scheme by clicking on Color, followed by Edit Color and selected Blue and Orange from the Color Blind palette. I deliberately wanted to keep this color scheme different from Speed and Red light violations, to prevent any confusion for the audience and to convey the difference in dimensions used for this chart.
 From this chart, I saw that the spike in number of violations for school zones is much higher than for Park zones.
 
-- To explore this further I then used the Number of Cameras calculated field. (Follow same steps as used for dashboard 2). Drag Number of cameras to Rows. This will result in a dual chart with one half as Number of Cameras in each zone type and second half showing the average violations by zone type per month.
+- To explore this further I then used the Number of Cameras calculated field. (Follow same steps as used for dashboard 1). Drag Number of cameras to Rows. This will result in a dual chart with one half as Number of Cameras in each zone type and second half showing the average violations by zone type per month.
 
 At this stage, the chart looks like this:
 
@@ -365,7 +364,7 @@ I decided to add an annotation for the chart to allow the audience to see the di
 
 ![](Annotation.png)
 
-We will now add a title and caption for the chart the same way we did for all the charts before and add this chart to dashboard #3. 
+We will now add a title and caption for the chart the same way we did for all the charts before and add this chart to dashboard #2. 
 In the previous version I had used Traffic Crashes and created a map of crash fatalities vs speed violations in a zipcode. But I was not able to combine these datasets since there were no common attributes. Hence, I have replaced those charts and dashboard with this one. 
 
 Tableau doesn't let users delete a sheet if it present in a dshabord. To remove  a sheet from the Tableau, first delete the dashboard or remove the sheets added to that dashboard by going to Sheets pane, right click on sheet name and select Remove from Dashboard. I then deleted the traffic crashes sheets and closed the data connections with that dataset.
@@ -376,17 +375,21 @@ And finally the dashboard looks like this,
 
 ![](Dashboard3.png)
 
+When compiling the dashboards, I felt this dashboard did not provide the entire context of the increase in number of violations in the month of July and why we are focussing on the spike in School Zones when the average violations in Park zones are much higher.
+
+So I added another chart to show the overall monthly trend of violations and provide a context to justify the above arguments. The final dashboard can be viewed on my Tableau public profile [here](https://public.tableau.com/profile/shruti8609#!/vizhome/SpeedCameraViolations_SecondVersion/SpeedCameraViolationsChicago?publish=yes)
+
 
 ### Dashboard 3: Understanding relationship between number of cameras and number of violations committed across Zipcodes
 
-This was my second dashboard in the previous version but I have moved it to dashboard number 3 in this version. This is just because of the sequence in which I worked on the charts and dashboards and nothing more. For this dashboard I have used the same data source created for dashboard #2.
+This was my second dashboard in the previous version but I have moved it to dashboard number 3 in this version. This is just because of the sequence in which I worked on the charts and dashboards. For this dashboard I have used the same data source created for dashboard #2.
 
 #### Chart 1: Number of Speed Cameras vs Zipcodes
 
 Taking the same chart from the previous week where I had compared the number of cameras with the average violations for each year, I have converted the chart into a combined axis chart. Now the number of cameras and the declining trend of average speed violations across years can be seen in the same chart. 
 To recreate the chart, follow these steps:
 - Open a new worksheet and use either merged or Zonetype violations sheet as the datasource. From the Data pane drag violation date to Columns.
-- To count the number of cameras create a Calculated fiel. Tableau lets users create a calculated field by clicking on the field and selecting "Calculated Field" option from the drop-down menu. A formula can then be entered in the dialog box and Tableau lets users know if the formula is correct and can be applied.
+- To count the number of cameras create a Calculated field. Tableau lets users create a calculated field by clicking on the field and selecting "Calculated Field" option from the drop-down menu. A formula can then be entered in the dialog box and Tableau lets users know if the formula is correct and can be applied.
 I used the formula in the image below which is similar to COUNT (DISTINCT *) in MySQL.Rename the field to Number of Speed Cameras.
 
 ![](CalcField.png)
@@ -483,7 +486,7 @@ Since, I had few charts mapped to the original dashboard created in the previous
 - Finally place Chart 3 on top right corner. 
 - After placing these charts on the same dashboard I realized we some colors overlap for different dimension among these charts. Especially between chart 2 and chart 3 the color for Park Zone and Cameras Unchanged appeared similar.
 
-![](Dashboard3.png)
+![](Dashboard3.2.png)
 
 In order to improve appearance of the dashboard, I made the following changes:
 
