@@ -150,36 +150,35 @@ Unfortunately, the Traffic datasets can only be combined with Speed Camera viola
 **Actions**
 - Traffic Crashes dataset can be explored further to identify locations prone to accidents due to speeding and introduce speed camera enforcement to make them safer for public.
 
+<br/>
+<br/>
 
-
-## Part 3 : Documentation of recreating the dashboard
+## Part 3: Second Version and detailed documentation for recreating the dashboards
 
 ### Dashboard 1: Comparison between Red Light and Speed Camera Violations
 
 Compared to my previous dashboard on this analysis, I have made the following changes:
 
-1. I have merged the datasets using Jupyter notebook to ensure accurate records are reflected in my visualizations. Tableau joins might not be the best option when working with datasets with little or no common attributes. For Tableau beginners, Tableau joins might not be the best way to combine data from multiple sources. I realized the difference in my joined datasets when I performed the same merge using Python and tried to recreate it in Tableau. Also , an added benefit is speed of data processing and not unnecessarily slowing down my Tableau desktop file due to live/ extract join based data sources.
+1. I have merged the datasets using Jupyter notebook to ensure accurate records are reflected in my visualizations. Tableau joins might not be the best option when working with datasets with little or no common attributes. For Tableau beginners, Tableau joins might not be the best way to combine data from multiple sources. I realized the difference in my joined datasets when I performed the same merge using Python and tried to recreate it in Tableau. Also, an added benefit is the increased speed of data processing without having to join datasets on Tableau.
 
-2. The second major change I made was using combined axis charts to replace my previous charts.
+2. The second major change I made was using combined axis charts to replace my previous charts. Combined axis charts provide the benefit of representing data within the same chart and making it easier for the audience to interpret the visualization. In addition, it prevents any skepticism in the relative relationship between bars or data points.
 
-3. I also added two charts to the analysis. One is on the trend of average speed and red light violations over the time period of study. This not only allowed me to use some cool analytics features in Tableau but also present an interesting finding in addition to the ones presented previously.
+3. I also added additional charts to my previous dashboard. For example, one chart is on the yearly trend of average speed and red light violations over time period of study. This not only allowed me to use some cool analytics features in Tableau but also present an interesting finding in addition to the ones presented previously. The second chart is a Scatter plot between the Speed violations and Red Light violations committed across zipcodes to see if any correlation exists between the two.
 
-4. Lastly, based on my previous analysis I was trying to understand whether any correlation existed by speed and red light violations and that is another addition to this week's dashboard.
-
-To summarize, the data source and merging process was quite an adventure. I will not bother you with the pain I had to go through to understand how data sources behave in Tableau and the fact that you need to re-do all previous charts if the data source is drastcially changed. But, let's focus on the positive. I got to create charts that I believe are more insightful and appealing than the previous version and I learned what not to do when working with multiple data sources on Tableau.
+To summarize, the data source and merging process was quite an adventure. I had to go through a lot of data merging variations to understand how data sources behave in Tableau. The downside of this was having to re-do all previous charts since the data source is drastcially changed. But, let's focus on the positive. I got to create charts that I believe are more insightful and appealing than the previous version and I learned what not to do when working with multiple data sources on Tableau.
 
 So below is a detailed walkthrough of each chart, including preparing data sources using Jupyter notebook and creating the chart and the dashboard for the first finding.
 
-**Combining data sources**
-Link to data sources: 
+**Combining data sources using Python**
+I combined Speed Camera Violations and Red Light Violations datasets using Python with Violation Date as column for join.
 
-**Python code for joining the datasets**
+![](Redlight.png)
 
-**Adding Data Sources to Python**
-- Editing datasources by replacing xx and removing Traffic Crashes.
-- Defining names of fields --> Red Camera Violations and Speed Camera Violations
-- Creating Calculated fields--> Num Speed Camera
-- Categorizing Dimensions and Measures
+**Adding Data Sources to Tableau**
+- Edit datasources by replacing the previous merged dataset with the new file and removing Traffic Crashes.
+- Rename Violations x and Volation y to Red Camera Violations and Speed Camera Violations
+- Create Calculated field 'Num Speed Camera' using the same formula used in the second version.
+- Categorize Dimensions and Measures if not correctly categorized by Tableau by simply dragging and dropping them in respective parts of the Data pane.
 
 #### Chart1: Comparison between Speed Camera and Red Light Camera Violations over the years
 
@@ -187,27 +186,21 @@ Compared to my previous chart, I have used combined axis charts to better explai
 
 **Steps to replicate the chart**
 - Drag Violation Date field to columns since we are observing a trend, rotate lables if not rotated already to improve readability.
-- Click on Year and select Show Filter to generate a filter card on the right side and use that to filter out years 2014 and 2019 from the analysis for which complete data is not available.
-- Drag the renamed field Speed Camera Violations and place it under rows. Drag second renamed field, Red  Light Violations and hover it on the y axis until the cursor shows two green bars which implies shared axes. This lets me display the number of Speed Camera Violations next to Red Light Violations and show the difference in bar size more clearly as compared to the chart in Part 2. 
+- Drag the renamed field Speed Camera Violations and place it under rows. Drag second renamed field, Red  Light Violations and hover it on the y axis until the cursor shows two green bars which implies a shared axes. This lets me display the number of Speed Camera Violations next to Red Light Violations and show the difference in  size of the bar more clearly as compared to the chart in Part 2. 
 - At this step Tableau also creates two new entities- Measure names and Measure Values. Measure names is available under the Filter Card on the right and Measure Values on Rows.
 - Edit the name on the y-axis from Values to "Number of Violations (in thousands)".
 - To change the color of the charts, hold down 'Command' button on MacBoock (Ctrl for Windows) and drag the Measure names from Columns to Color. Click on the Color button and then click on Edit Colors to see the option for changing colors for the bars. I have chosen blue for Speed Camera Violations and red for Red Light Violations.
 - Click on the dropdown button on 'Measure name' filter card on the right, and select Edit Title. Enter the new title as 'Violation Type'. 
-- Changed sheet name to P_No of violations over years
-- Changed title to be the warrant/ claim for the chart and added the previous title and description under Caption. Double click on the chart title and edit text in the dialog box that appears. Use the options available for formatting like reducing font size which is useful when adding charts to dashboards, I have use font size 11 for title and formatted text in bold.
-- Edit filter title to Year / Hide filter card.
-- Remove gridlines by right click anywhere on the chart and selecting Format from the dropdown. Click on the 'Lines' icon and click on Rows tab. Against Gridlines select none to remove the gridlines on rows.
+- Change sheet name to P_No of violations over years.
+- Edit title to convey the warrant/ claim for the chart and add the previous title and description under Caption. Double click on the chart title and edit text in the dialog box that appears. Use the options available for formatting like reducing font size which is useful when adding charts to dashboards, I have used font size 11 for titles and formatted text in bold.
+- Edit filter card title for Year by clicking on the card and selecting Edit title from the dropdown. Change the name to 'Year'. Follow the same step for Zone Type.
+- Remove gridlines by right-clicking anywhere on the chart and selecting Format from the dropdown. Click on the 'Lines' icon and click on Rows tab. Against Gridlines select None to remove the gridlines on rows.
 
 
 The chart currently looks like this:
-< insert chart image>
+![](Chart1.1.png)
 
 I want to remove the titles in the bottom axes because the information is represented using the Violation Type legend on the right. To remove the axes: right click on the axis and click on Show Header to deselect it. This hides the bottom axes and makes the chart look cleaner.
-
-- The bottom axis which contains a repetition of the 
-
-<insert before and after charts>
-
 
 #### Chart 2: Moving Average Chart
 
