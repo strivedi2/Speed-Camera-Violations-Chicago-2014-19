@@ -507,8 +507,12 @@ The final dashboard after editing the captions and titles can be seen below:
 Before publishing the Tableau file, last step is to update the Story. The best part of this process is that all updates in the dashboards reflect in the story already. I will just edit the Captions and title of the Story. 
 
 To edit the caption just click on the text and start typing. In the title, I will just edit the years to 2014-2019.
+I also increased the font size of the titles for all charts to 12 and whereever needed increased spacing between the charts to avoid a cluttered look.
+Some other final changes include:
+- Format axis titles to font size 8.
+- Verify all tooltips are displayed as formatted.
 
-And finally, here again is the link to all my Tableau public profile for this version: [Link to Second Version](<add link>)
+And finally, here again is the link to all my Tableau public profile for this version: [Link to Second Version](https://public.tableau.com/shared/JCKS4KW5Z?:display_count=yes)
 
 
 
