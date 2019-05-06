@@ -204,7 +204,6 @@ I want to remove the titles in the bottom axes because the information is repres
 
 #### Chart 2: Moving Average Chart
 
-
 - Drag Violation Date to Columns and Speed Camera Violations to Rows. Click on SUM(Speed Camera Violations) to display the dropdown menu and change Measure (SUM) to Average.
 - Drag Red Light Violations to the y axis and hover until two green bars are diplayed and create a combined axes chart. Observe the same Measure names and Measure Values are created by Tableau as in the previous chart. 
 - Follow same steps as mentioned in Chart 1 to add and edit the color of the lines. Oh yes! since this is going to be a moving avergae chart make sure the Chart type is set to 'Line'.
