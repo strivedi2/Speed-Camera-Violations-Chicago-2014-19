@@ -361,9 +361,42 @@ The next step, and the purpose of this exercise is to calculate the difference i
 
 Next, we will observed the trend of average violations across these groups to see if there is any difference.
 
-**Steps to create chart**
--
-- Open a new 
+**Steps to create the chart**
+- Open a new worksheet and rename it to P_CameraGroup vs Violations. Use the same data source where we created 'ZipCodes (group)' dimension. 
+- Drag Violation Date to columns and Violations to Rows. Add ZipCodes (group) to color. Edit Colors using Color Blind palette. The first version of this chart looks like this.
+
+![](Version1.png)
+
+Let us now look at the each category or group. 'Cameras Unchanged' seem to be following the same pattern as the overall average trend of violations. This is because most of the zipcodes have not witnessed a change in the number of cameras.
+
+Inetrestingly, between the other two categories- Cameras Decreased have higher avergae than Cameras Increased. And to add, the decrease in number of cameras was made only in 2019 across two zipcodes. The shape of the curve brings up the question of why were number of cameras  reduced in zipcodes with an increasing trend in number of violations. 
+
+As for Cameras Increased group, the first camera increase was done in 2015 when number of cameras were increased from 143 to 150. The second increase happened in 2018 when 12 new cameras were added. We do not have complete data from 2014 to assess the change in average violations recorded due to the first increase. Let us however, calculate a moving average of the violations to see if any significant trend emerges and add trend lines to see whether the moving average for each group are statistically significant.
+
+Also note, I have changed the color to impart a neutral tone to unchanged group, and assigned dark grey to cameras decreased and brick red/brown to cameras increased to signify these are the areas where cameras were increased due to higher number of violations.
+
+The chart with moving average looks more smooth. Note Moving Average is added by using Quick Table Calculation as done in the previous dashboard for Moving Average of overall violations. And Trend line has also been added using the same steps mentioned in Dashboard 1 Chart 2. 
+
+![](Movingavg.png)
+
+The trend lines for each group are statiscally significant. Notice how the moving average line for Cameras Decreased group intresects with Cameras Unchanged and also has higher average violations than Cameras Increased group. 
+
+**For the next steps,**
+- Hide the Moving average lines by clicking on Color under Marks Card and reducing transparency to 0. 
+- Now we will add ZoneType to compare the trend across Park and School Zones. Drag Zone Type dimension to columns and place it before Violation Date. I wanted to do this exercise since Park Zones have higher violations than School Zones. Notice the change in trends in the chart below:
+
+![](Zonetype.png)
+
+I next wanted to understand which zipcode under each zone type underwent changes in number of cameras. For this I used a new worksheet and created a new chart as follows:
+- Use the same data source from previous chart. Drag Violation Date to columns and Number of cameras to rows. Add ZoneType to Color. This picks up the same colour defined in previous charts for ZoneType. Hence no need to edit the colors.
+- Remove gridlines and add title and caption as seen in image of the chart below.
+
+![](CameraZonetype.png)
+
+
+
+
+
 
 
 
