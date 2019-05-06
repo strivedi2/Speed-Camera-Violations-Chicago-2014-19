@@ -201,6 +201,9 @@ The chart currently looks like this:
 ![](Chart1.1.png)
 
 I want to remove the titles in the bottom axes because the information is represented using the Violation Type legend on the right. To remove the axes: right click on the axis and click on Show Header to deselect it. This hides the bottom axes and makes the chart look cleaner.
+Final step is to edit Tooltip. Click on Tooltip under Marks Card and change the time dimension to 'Year'.
+
+![](Tooltip1.png)
 
 #### Chart 2: Moving Average Chart
 
@@ -223,6 +226,9 @@ By adding moving average calculations, a smoother line is observed in the chart 
 Also, notice that the difference in the average number of red light violations committed. A flat trend indicates that there will always be some red light violations committed. This could be because of people who might be rushing to get somewhere.
 - Edit y axis title to 'Average Violations'.
 - Edit filter Card Measure names and rename it to Violation Type.
+- Final step is to edit Tooltip. Click on Tooltip under Marks Card and change the time dimension to 'Year'.
+
+![](Tooltip2.png)
 
 
 #### Chart 3: Violations in zipcodes
