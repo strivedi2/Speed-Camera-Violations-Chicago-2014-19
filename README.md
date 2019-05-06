@@ -307,8 +307,86 @@ To create a dashboard for this finding, open a new dashboard worksheet in Tablea
 - Axis labels can be formatted by right clicking on the label and selecting Format. In the Axis Option, under Title, click on Font and change font size to 8.
 - Move the legends to the right, and onto white space. Since I have used the same color scheme for all my charts, one legend would suffice to explain the difference in colors. 
 
+### Dashboard 2: Understanding difference between Violations in Park and School Zones
 
-### Dashboard 2: Understanding relationship between number of cameras and number of violations committed across Zipcodes
+During my data exploration, I had created a chart to understand the monthly trend in violations and observed a spike in violations during months of July and August. 
+[Link to my Exploration story on Tableau Public](https://public.tableau.com/profile/shruti8609#!/vizhome/SpeedCameraViolations_Chicago_2014-19/Story1)
+
+For this dashboard, I have tried to delve deeper to see if I can identify reasons for the spike.
+
+On City of Chicago's website, there is a list of Camera IDs and the zones they are located in ([link](https://www.chicago.gov/content/dam/city/depts/cdot/Red%20Light%20Cameras/2018/Chicago_Active_Camera_Schedule_090518.pdf)). I used this pdf to extract Zone based information. Cleaned the excel file using Jupyter notebook and added a new Zone Type column to classify Park and School Zones.
+
+Jupyter notebook code below:
+
+
+I then created a new worksheet in my Tableau file and added this file as a new data source using New Data Source icon. Let us now prepare charts for this dashboard.
+
+#### Chart 1 : Violations by Zone Type
+
+For this chart we are trying to plot violations by Zone type across months to see if the spike can be explained by using Zone type as a new dimension. 
+- Drag the Violation Date to Columns and change type from Year to Month by clicking on the button to display drop down menu and selecting Month from the available options. This results in a x-axis with month as point of analysis. 
+
+- Next, drag Violations from Measure to columns and change measure to Average to display the monthly average trend of violations. This is a trend over time months so we will again be using line to represent the trend and hence have chosen to show Time (months) on x-axis and violations on y-axis.
+
+- Add Zone Type to color by dragging Zone type dimension over color. I have changed the color scheme by clicking on Color, followed by Edit Color and selected Blue and Orange from the Color Blind palette. I deliberately wanted to keep this color scheme different from Speed and Red light violations, to prevent any confusion for the audience and to convey the difference in dimensions used for this chart.
+From this chart, I saw that the spike in number of violations for school zones is much higher than for Park zones.
+
+- To explore this further I then used the Number of Cameras calculated field. (Follow same steps as used for dashboard 2). Drag Number of cameras to Rows. This will result in a dual chart with one half as Number of Cameras in each zone type and second half showing the average violations by zone type per month.
+
+At this stage, the chart looks like this:
+
+![](ViolationsZoneType.png)
+
+Now, we can see that the monthly trend can be explained by the decrease in number of cameras in school zones and which results in increase in the number of speed violations committed in these zones. Interestingly, the number of violations in Park Zones also sees a smaller spike despite no observed change in the number of cameras.
+
+From these findings we can conclude that, there are following possible reasons to explain the spike in violations for July- August months:
+1. One obvious reason is the decline in number of operational cameras. Thus, people are going above the speed limit when they believe the cameras are not watching. And this data is only from operational cameras! We don't know what is happening in zones where cameras have been turned off for these months. Does this mean schools are not operational at all during these months?
+2. The second reason can be attributed to lack of clear messaging about which zones have opertaional cameras for these months and which don't. That brings us to the question - Do people only care about speeding because of a camera enforcement and the consequence of getting a ticket and paying a fine? If yes, what is the objective of this enforcement program? If the objective is to create awareness about speeding in pedestrian friendly zones, then the approach of switching off certain cameras is certainly not working.
+3. The third observation kind of ties into the first two. If speeding is only camera enforced, then how safe are children attending summer schools, if any, in areas where cameras are switched off for these months and where the number of speed violations drastically increases. This fails to achieve the overall goal of the program to make these zones safe for pedetrians.
+4. Let us now look at Park zones. These zones also see a spike in number of violations committed for the month of July despite the same number of cameras as the previous month. What could be the reason for this spike? One possible explanation could be the weather. Quick google search for Chicago's average temperature and temp trend for July gives the following result:
+
+![](ChicagoAvgTempJuly.png) ![](ChicagotTempTrend.png)
+
+From the above data, one can clearly see that the average temperature is highest for July which makes it a pleasant time to spend time outdoors. That and school break is the perfect excuse to visit parks in the city. But, we can see how the pleasant weather and a projected increase in the number of visitors, and thus number of vehicles on the road results in rise in number of speed violations. 
+
+Now let us edit our chart further to improve our message.
+
+- Edit Title for Y axis to Average Speed Violations and remove gridlines. For rotating lables we, will first see how the chart fits into dashboard and decide whether to rotate the labels or not.
+- We will now add Quick Table Calculations to show the difference in number of cameras and violations for each month. Click on the Measures in Rows and click on Quick Table Calculation in the drop down. Select Percent Difference to add a percent change from the previous number. Now we can see that the chart changes to represent the percent change over months. Refer this [link](https://onlinehelp.tableau.com/current/pro/desktop/en-us/calculations_tablecalculations_quick.htm) for more documentation.
+
+![](QuickTableCalc.png)
+
+Since this chart might not give the entire context to our audience by itself, we will go back to the original chart and add percent differences as a tooltip that is displayed when a user hovers over the trend line.
+
+- Remove the Quick Table calculations from Measures. This can be achieved by selecting Clear Table Calculation from the drop-down menu.
+- Now add the same measures to tooltip in the Marks Card under All. Right-cick on the the measure and select Quick Table Calculations -> Percent Difference to display the percent difference in the tool tip.
+- Edit the tooltip to improve readability as shown below.
+
+![](EditTooltip.png)
+
+- In the chart, let's add an annotation for School zone for the month of July. Select July on Average Speed Violations chart, right-click and select Annotations->Mark. Edit Mark using same format as above and adjust the annotation to be located on white space over the chart and not block the chart as shown below. Repeat the same steps for adding annotation for month of April. Understand here that the annotation has information from both the charts so depending on the space one can use either trend (Number of Cameras or Average Violations) for adding annotations.
+
+![](AnnotationMark.png)
+
+I decided to add an annotation for the chart to allow the audience to see the difference in number of cameras and violations committed in school zones for two months without having to navigate or hover over the chart. This allows helps retain the message if my chart is copied and used on platforms other than Tableau (giving a presentation for instance).
+
+![](Annotation.png)
+
+We will now add a title and caption for the chart the same way we did for all the charts before and add this chart to dashboard #3. 
+In the previous version I had used Traffic Crashes and created a map of crash fatalities vs speed violations in a zipcode. But I was not able to combine these datasets since there were no common attributes. Hence, I have replaced those charts and dashboard with this one. 
+
+Tableau doesn't let users delete a sheet if it present in a dshabord. To remove  a sheet from the Tableau, first delete the dashboard or remove the sheets added to that dashboard by going to Sheets pane, right click on sheet name and select Remove from Dashboard. I then deleted the traffic crashes sheets and closed the data connections with that dataset.
+
+I then added the sheet containing the chart created above to the dashboard and edited the title to convey the message from the dashboard. Note a single worksheet can also be added directly to the story which is what we will be creating in the end to summarize all our findings through dashboards and hence it is okay to not carry out this step of updating dashboard 3. For adding a sheet directly to a story, drag the desired sheet from the Sheets pane and hover to right of a story caption box and drop the sheet. This will create a new story page and then one can add a new caption for the story and add title for the worksheet same as we did for the dashboard.
+
+And finally the dashboard looks like this,
+
+![](Dashboard3.png)
+
+
+### Dashboard 3: Understanding relationship between number of cameras and number of violations committed across Zipcodes
+
+This was my second dashboard in the previous version but I have moved it to dashboard number 3 in this version. This is just because of the sequence in which I worked on the charts and dashboards and nothing more. For this dashboard I have used the same data source created for dashboard #2.
 
 #### Chart 1: Number of Speed Cameras vs Zipcodes
 
@@ -387,118 +465,67 @@ The trend lines for each group are statiscally significant. Notice how the movin
 
 ![](Zonetype.png)
 
+- Remove gridlines and Hide title for y axis.
+- Edit title for y axis to Average Violations and add Caption.
+- Hide Zipcodes Group filter card since that does not provide any legend information after setting transparency to 0%.
+- Add title for Chart in font size 11.
+- Edit ToolTip based on the following image. (Tip: Use Preview to see what the edited output before clicking on Apply). 
+
+![](Tooltip3.2.png)
+
+#### Chart 3: Number of Cameras vs Zone Type
+
 I next wanted to understand which zipcode under each zone type underwent changes in number of cameras. For this I used a new worksheet and created a new chart as follows:
 - Use the same data source from previous chart. Drag Violation Date to columns and Number of cameras to rows. Add ZoneType to Color. This picks up the same colour defined in previous charts for ZoneType. Hence no need to edit the colors.
 - Remove gridlines and add title and caption as seen in image of the chart below.
 
 ![](CameraZonetype.png)
 
+Notice how the increase in number of cameras is observed in school zones whereas the average number of violations have been higher in Park zones.
 
+Let us now create dashboard #3.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Dashboard 3: Understanding difference between Violations in Park and School Zones
-
-During my data exploration, I had created a chart to understand the monthly trend in violations and observed a spike in violations during months of July and August. 
-[Link to my Exploration story on Tableau Public](https://public.tableau.com/profile/shruti8609#!/vizhome/SpeedCameraViolations_Chicago_2014-19/Story1)
-
-For this dashboard, I have tried to delve deeper to see if I can identify reasons for the spike.
-
-On City of Chicago's website, there is a list of Camera IDs and the zones they are located in ([link](https://www.chicago.gov/content/dam/city/depts/cdot/Red%20Light%20Cameras/2018/Chicago_Active_Camera_Schedule_090518.pdf)). I used this pdf to extract Zone based information. Cleaned the excel file using Jupyter notebook and added a new Zone Type column to classify Park and School Zones.
-
-Jupyter notebook code below:
-
-
-I then created a new worksheet in my Tableau file and added this file as a new data source using New Data Source icon. Let us now prepare charts for this dashboard.
-
-#### Chart 1 : Violations by Zone Type
-
-For this chart we are trying to plot violations by Zone type across months to see if the spike can be explained by using Zone type as a new dimension. 
-- Drag the Violation Date to Columns and change type from Year to Month by clicking on the button to display drop down menu and selecting Month from the available options. This results in a x-axis with month as point of analysis. 
-
-- Next, drag Violations from Measure to columns and change measure to Average to display the monthly average trend of violations. This is a trend over time months so we will again be using line to represent the trend and hence have chosen to show Time (months) on x-axis and violations on y-axis.
-
-- Add Zone Type to color by dragging Zone type dimension over color. I have changed the color scheme by clicking on Color, followed by Edit Color and selected Blue and Orange from the Color Blind palette. I deliberately wanted to keep this color scheme different from Speed and Red light violations, to prevent any confusion for the audience and to convey the difference in dimensions used for this chart.
-From this chart, I saw that the spike in number of violations for school zones is much higher than for Park zones.
-
-- To explore this further I then used the Number of Cameras calculated field. (Follow same steps as used for dashboard 2). Drag Number of cameras to Rows. This will result in a dual chart with one half as Number of Cameras in each zone type and second half showing the average violations by zone type per month.
-
-At this stage, the chart looks like this:
-
-![](ViolationsZoneType.png)
-
-Now, we can see that the monthly trend can be explained by the decrease in number of cameras in school zones and which results in increase in the number of speed violations committed in these zones. Interestingly, the number of violations in Park Zones also sees a smaller spike despite no observed change in the number of cameras.
-
-From these findings we can conclude that, there are following possible reasons to explain the spike in violations for July- August months:
-1. One obvious reason is the decline in number of operational cameras. Thus, people are going above the speed limit when they believe the cameras are not watching. And this data is only from operational cameras! We don't know what is happening in zones where cameras have been turned off for these months. Does this mean schools are not operational at all during these months?
-2. The second reason can be attributed to lack of clear messaging about which zones have opertaional cameras for these months and which don't. That brings us to the question - Do people only care about speeding because of a camera enforcement and the consequence of getting a ticket and paying a fine? If yes, what is the objective of this enforcement program? If the objective is to create awareness about speeding in pedestrian friendly zones, then the approach of switching off certain cameras is certainly not working.
-3. The third observation kind of ties into the first two. If speeding is only camera enforced, then how safe are children attending summer schools, if any, in areas where cameras are switched off for these months and where the number of speed violations drastically increases. This fails to achieve the overall goal of the program to make these zones safe for pedetrians.
-4. Let us now look at Park zones. These zones also see a spike in number of violations committed for the month of July despite the same number of cameras as the previous month. What could be the reason for this spike? One possible explanation could be the weather. Quick google search for Chicago's average temperature and temp trend for July gives the following result:
-
-![](ChicagoAvgTempJuly.png) ![](ChicagotTempTrend.png)
-
-From the above data, one can clearly see that the average temperature is highest for July which makes it a pleasant time to spend time outdoors. That and school break is the perfect excuse to visit parks in the city. But, we can see how the pleasant weather and a projected increase in the number of visitors, and thus number of vehicles on the road results in rise in number of speed violations. 
-
-Now let us edit our chart further to improve our message.
-
-- Edit Title for Y axis to Average Speed Violations and remove gridlines. For rotating lables we, will first see how the chart fits into dashboard and decide whether to rotate the labels or not.
-- We will now add Quick Table Calculations to show the difference in number of cameras and violations for each month. Click on the Measures in Rows and click on Quick Table Calculation in the drop down. Select Percent Difference to add a percent change from the previous number. Now we can see that the chart changes to represent the percent change over months. Refer this [link](https://onlinehelp.tableau.com/current/pro/desktop/en-us/calculations_tablecalculations_quick.htm) for more documentation.
-
-![](QuickTableCalc.png)
-
-Since this chart might not give the entire context to our audience by itself, we will go back to the original chart and add percent differences as a tooltip that is displayed when a user hovers over the trend line.
-
-- Remove the Quick Table calculations from Measures. This can be achieved by selecting Clear Table Calculation from the drop-down menu.
-- Now add the same measures to tooltip in the Marks Card under All. Right-cick on the the measure and select Quick Table Calculations -> Percent Difference to display the percent difference in the tool tip.
-- Edit the tooltip to improve readability as shown below.
-
-![](EditTooltip.png)
-
-- In the chart, let's add an annotation for School zone for the month of July. Select July on Average Speed Violations chart, right-click and select Annotations->Mark. Edit Mark using same format as above and adjust the annotation to be located on white space over the chart and not block the chart as shown below. Repeat the same steps for adding annotation for month of April. Understand here that the annotation has information from both the charts so depending on the space one can use either trend (Number of Cameras or Average Violations) for adding annotations.
-
-![](AnnotationMark.png)
-
-I decided to add an annotation for the chart to allow the audience to see the difference in number of cameras and violations committed in school zones for two months without having to navigate or hover over the chart. This allows helps retain the message if my chart is copied and used on platforms other than Tableau (giving a presentation for instance).
-
-![](Annotation.png)
-
-We will now add a title and caption for the chart the same way we did for all the charts before and add this chart to dashboard #3. 
-In the previous version I had used Traffic Crashes and created a map of crash fatalities vs speed violations in a zipcode. But I was not able to combine these datasets since there were no common attributes. Hence, I have replaced those charts and dashboard with this one. 
-
-Tableau doesn't let users delete a sheet if it present in a dshabord. To remove  a sheet from the Tableau, first delete the dashboard or remove the sheets added to that dashboard by going to Sheets pane, right click on sheet name and select Remove from Dashboard. I then deleted the traffic crashes sheets and closed the data connections with that dataset.
-
-I then added the sheet containing the chart created above to the dashboard and edited the title to convey the message from the dashboard. Note a single worksheet can also be added directly to the story which is what we will be creating in the end to summarize all our findings through dashboards and hence it is okay to not carry out this step of updating dashboard 3. For adding a sheet directly to a story, drag the desired sheet from the Sheets pane and hover to right of a story caption box and drop the sheet. This will create a new story page and then one can add a new caption for the story and add title for the worksheet same as we did for the dashboard.
-
-And finally the dashboard looks like this,
+Since, I had few charts mapped to the original dashboard created in the previous version of this file, I'm going to edit the same dashboard and add new sheets.
+- Drag the three sheets containing charts created above and place them on the dashboard. Place Chart 1 on top left which compared the overall trend of number of cameras with average violations over the years. Place the second chart in the bottom to allow us to place park and school zones side by side. Remove the filter cards if they appear. 
+- Finally place Chart 3 on top right corner. 
+- After placing these charts on the same dashboard I realized we some colors overlap for different dimension among these charts. Especially between chart 2 and chart 3 the color for Park Zone and Cameras Unchanged appeared similar.
 
 ![](Dashboard3.png)
+
+So I changed the color of Camera Unchanged to light orange in the worksheet. Also to ensure we have a legend for Chart 2 I will increase transparency 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 And finally, here again is the link to my Tableau public profile for this week's analysis: <add link>
