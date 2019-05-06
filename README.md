@@ -229,7 +229,9 @@ Also, notice that the difference in the average number of red light violations c
 - Plot Average number of Speed violations against zipcode x. Right click on the chart and select View Data. From the table that appears, click on Export All and select the folder where you want to create the csv file for this dataset. Repeat the same for average number of Red Light violations.
 - Now combine the number of Violations across Zipcodes using Jupyter notebook. I am doing this exercise because I realized that if you perform a join in tableau using Violation Date and Zipcode as columns for joining, the resulting number of rows are not accurate. Same holds for trying to join the two datasets on Violation Date. Performing the join using Jupyter notebook helped me understand these errors which occur due to duplication of rows. At the same time, using combined dataset with accurate number of rows does not provide the chart I am intending to replicate from the previous week because the Zipcode y values against Zipcode x values are null and vice versa. 
 
-Code snippet below:
+Code is given below:
+
+![](Zipcodemerge.png)
 
 I performed a left join since I am interested in Zipcodes where Speed Camera VIolations have been recorded and study Red Light violations in these zipcodes.
 
@@ -237,20 +239,14 @@ I performed a left join since I am interested in Zipcodes where Speed Camera VIo
 (**Tip**: Save the exported files as CSV UTF-8 (Comma Delimited) files to successfully read the files on Jupyter notebook.)
 
 
-- Create a new worksheet and add th new csv files as a data source. We will be using this file for charts 3 and 4. Delete or hide the previous worksheet since we will not be using it.
-
+- Create a new worksheet and add the new csv files as a data source. We will be using this file for charts 3 and 4. Delete or hide the previous worksheet since we will not be using it.
 - Rename dimension Zipcode x to Zipcodes, and measures to Average Red Light Violations and Average Speed Camera Violations. This step can be optional since these changes can be made in the chart as well. But I have adopted a practice to rename dimensions and measures to avoid any confusion.
 - Drag ZipCodes to columns, Average Speed Camera Violations to Rows and use the same steps followed above for a combined axis chart and add Red Light Violations. Note that there is only one value against each zipcode, hence using Sum, Average, Minimum or Maximum will all return the same average number in the original data source.
-- Click on the descending order sort icon on the top or on the Y-axis to sort zipcodes by highest average speed violations. 
+- Click on the descending order sort icon on the top or on the Y-axis to sort zipcodes by highest average speed violations.
 - Click on nulls on the chart and click on Filter to remove null values.
 - Add Measure names to color and edit the colors to use the same color scheme used in previous charts for speed camera and red light violations.
-Note that we now get a chart with single stacked bars for speed camere and red light violations and shows that Zipcodes with highest speed violations might not necessarily have the highest red light violations. Thus there appears to be no correlation between the two.
 
-< insert chart image>
-
-
-Let's make remaining changes to the chart.
-
+Let's make some more changes to the chart.
 - Edit y axis and rename it to 'Average Violations'.
 - Hide field label Zipcodes using right click and selecting 'Hide Field Label for Column...' option.
 - Rotate x axis label if it does not occur automatically to fit the chart on the worksheet.
@@ -258,6 +254,9 @@ Let's make remaining changes to the chart.
 - Remove gridlines as done for previous charts.
 
 
+![](Chart1.3.png)
+
+Note that we now get a chart with single stacked bars for speed camere and red light violations and shows that Zipcodes with highest speed violations might not necessarily have the highest red light violations. Thus there appears to be no correlation between the two.
 
 
 #### Chart 4: Scatter Plot between Average Speed Violations and Average Red Light Violations in Zipcodes
@@ -270,15 +269,13 @@ Let's make remaining changes to the chart.
 - Click on Tooltip to edit aliases for values displayed when a user hovers on a circle on the chart. Use Zipcode, Average Speed Violations and Average Red Light Violations in the same order as aliases. (**Tip**) Order can be changed by cutting and pasting the entire row in the desired order.) 
 - Remove gridlines.
 - Edit title of the Speed Violations size card on the right to 'Average Speed Violations'.
+- Add title 'There is no correlation between Speed violations and Red Light Violations among zip codes where these violations occurred'.
+- Add Caption 'Average Speed Camera and Red Light Camera Violations across ZipCodes, 2014-19'. 
 
-
-< chart image>
+![](CorrelationScatterPlot.png)
 
 From the scatter plot one can clearly see there is no correlation between speed camera violations and red light violations in a zipcode. Zipcodes with the highest and lowest speed violations have nearly the same average number of red light violations. If there was a correlation then as the average number of speed violations would increase, the number of red light violations would increase too. Thus there would be more circles as one would move to right and top of the chart. But that relationship does not exist here.
 
-
-- Add title 'There is no correlation between Speed violations and Red Light Violations among zip codes where these violations occurred'.
-- Add Caption 'Average Speed Camera and Red Light Camera Violations across ZipCodes, 2014-19'. 
 
 #### Create Dashboard for first finding
 
@@ -297,6 +294,11 @@ To create a dashboard for this finding, open a new dashboard worksheet in Tablea
 - Chart titles should be font size 11. I removed bold formatting from the titles and found that the dashboard looked more clean and easier to read. I didn't want to the get distracted by individual chart titles and not read the overarching message of the dashboard.
 - Axis labels can be formatted by right clicking on the label and selecting Format. In the Axis Option, under Title, click on Font and change font size to 8.
 - Move the legends to the right, and onto white space. Since I have used the same color scheme for all my charts, one legend would suffice to explain the difference in colors. 
+
+![](Dashboard1.png)
+
+The final dashboard appears like this.
+
 
 ### Dashboard 2: Understanding difference between Violations in Park and School Zones
 
