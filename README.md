@@ -330,15 +330,17 @@ I used the formula in the image below which is similar to COUNT (DISTINCT *) in 
 ![](NumCameraViolations.png)
 
 
-#### Chart 2: Grouping zipcodes by the change in number of cameras 
+#### Chart 2: Grouping zipcodes by change in number of cameras 
 
 I wanted to understand the trend of how change in the number of cameras affects violations in a ZipCode. This is something that I tried to explore in the previous version as well but was not happy with the chart that was produced. 
+Number of cameras were increased in 2018 from 150 to 162 and decreased in 2019 to 160. I am excited to see how the trend of average violations in these zipcodes will look like. It will also help me understand whether these camera installations were desired at these  zipcodes or could these resources be better used elsewhere.
+
 This time, based on inputs from my Professor, I plan to group zipcodes by the change in number of cameras. I plan to create 3 groups:
 - Zipcode where there was no change in the number of cameras
 - Zipcodes where number of cameras decreased 
 - Zipcodes where number of cameras increased 
 
-To keep the calculation simple, I plan to calculate the difference between 2014 and 2018. (Number of cameras were increased in 2018 from 150 to 162 and I am excited to see how the trend will look like. It will also help me understand whether these camera installations were warranted at the desired zipcodes or these resources could be better used elsewhere.)
+To keep the calculation simple, I plan to calculate the difference between 2014 and 2019. 
 
 To first calculate the difference in number of cameras, I created a table visualization to help read the number of cameras per Zipcode per year. 
 
@@ -347,6 +349,22 @@ To first calculate the difference in number of cameras, I created a table visual
 **Steps to recreate the chart**
 - As seen in the image, drag Violation Date to Columns and make sure it is Year. Drag Zipcodes to Rows. Click on Show Me button and select Table from list of chart types. Drag Number of Cameras to the middle of the table to fill table values. Now one can clearly see the number of cameras in each zipode by year. 
 - Right-click on Zipcodes and click on Show Filter. In the Filter card, right-click on Zipcode and select Edit Filter. From the dialog box, deslect null from Zipcodes. 
+
+**Create Calculated Field for Difference in Number of Cameras**
+The next step, and the purpose of this exercise is to calculate the difference in the number of cameras between 2014 and 2018. 
+- Hide the Zipcode filter by right-click and selecting Hide Card from drop down menu.
+- To add table calculation, right-click on Number of Cameras in Marks Card and select Add Table Calculation. In the box that appears, choose 'Difference From' since we are calculating the difference. Select 'Table Across' since difference is in values in the same row and finally select 'First' in relative to get the difference between 2014 and 2018. 
+- Click on 2019 in Year axis and select Sort Ascending to sort the Zipcodes by the change in number of cameras.
+- Select all the values in the view where number of cameras decreased and click on Group. Notice a new dimension called ZipCodes (group) is created. Under the Marks card, righ-click on Zipcodes (group) and select Edit Group to change Group name to Cameras Decreased.
+- Repeat above step for Zipcodes where Cameras increased and rename the group to Cameras Increased. In the same dialog box rename the 'Other' group as Cameras Unchanged.
+- Click on Apply to see the change reflected in the filter card on the right. 
+
+Next, we will observed the trend of average violations across these groups to see if there is any difference.
+
+**Steps to create chart**
+-
+- Open a new 
+
 
 
 
