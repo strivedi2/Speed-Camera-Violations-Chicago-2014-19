@@ -76,7 +76,7 @@ This does however leave questions unanswered about why some zipcodes have highes
 
 Speed Camera Dataset lists more than one camera for an address or zipcode. I was interested to understand why did some Zip codes have more number of cameras than others. Also, how many cameras were in operation between 2015-18 and whether any changes in the number of cameras has an impact on the number of violations.
 
-I first created a calculated field to count the distinct number of cameras. Tableau lets users create a calculated field by clicking on the field and selecting "Calculated Field" option from the drop-down menu. A formula can then be entered is the dialog box and Tableau lets users know if the formula is correct and can be applied.
+I first created a calculated field to count the distinct number of cameras. Tableau lets users create a calculated field by clicking on the field and selecting "Calculated Field" option from the drop-down menu. A formula can then be entered in the dialog box and Tableau lets users know if the formula is correct and can be applied.
 I used the formula in the image below which is similar to COUNT (DISTINCT *) in MySQL. 
 
 ![](CalcField.png)
@@ -306,6 +306,71 @@ To create a dashboard for this finding, open a new dashboard worksheet in Tablea
 - Chart titles should be font size 11. I removed bold formatting from the titles and found that the dashboard looked more clean and easier to read. I didn't want to the get distracted by individual chart titles and not read the overarching message of the dashboard.
 - Axis labels can be formatted by right clicking on the label and selecting Format. In the Axis Option, under Title, click on Font and change font size to 8.
 - Move the legends to the right, and onto white space. Since I have used the same color scheme for all my charts, one legend would suffice to explain the difference in colors. 
+
+
+### Dashboard 2: Understanding relationship between number of cameras and number of violations committed across Zipcodes
+
+#### Chart 1: Number of Speed Cameras vs Zipcodes
+
+Taking the same chart from the previous week where I had compared the number of cameras with the average violations for each year, I have converted the chart into a combined axis chart. Now the number of cameras and the declining trend of average speed violations across years can be seen in the same chart. 
+To recreate the chart, follow these steps:
+- Open a new worksheet and use either merged or Zonetype violations sheet as the datasource. From the Data pane drag violation date to Columns.
+- To count the number of cameras create a Calculated fiel. Tableau lets users create a calculated field by clicking on the field and selecting "Calculated Field" option from the drop-down menu. A formula can then be entered in the dialog box and Tableau lets users know if the formula is correct and can be applied.
+I used the formula in the image below which is similar to COUNT (DISTINCT *) in MySQL.Rename the field to Number of Speed Cameras.
+
+![](CalcField.png)
+
+- Drag Number of Speed Cameras field to columns. Drag Speed Camera Violations and hover over the y-axis and follow the same steps mentioned in previous charts for creating a combined axic chart. Be sure to change the Measure to Average for violations.
+- To be consistent with previous formats, add Caption 'Average number of Speed Enforcement Cameras vs Number of Speed Violations committed, 2014-2019'. Remove gridlines using the same steps mentioned before.
+- Click on Color button and edit the color for Number of Speed Cameras to grey. 
+- I have removed the axes titles because one measure is a number and the other is an average. I could not think of a uniform title. 
+- Edit title of Measure Names card to Legend. And under Marks Card, right-click Measure names and select Edit Aliases to edit legend names. Change them to Number of Cameras and Average Speed Violations.
+- Edit title to clarify the message of the chart. Since we observe that the number of cameras have largely remained constant I have added the title - 'Number of Cameras have remained constant for 2014-17 while average speed violations have continued to decline'. The chart looks like this:
+
+![](NumCameraViolations.png)
+
+
+#### Chart 2: Grouping zipcodes by the change in number of cameras 
+
+I wanted to understand the trend of how change in the number of cameras affects violations in a ZipCode. This is something that I tried to explore in the previous version as well but was not happy with the chart that was produced. 
+This time, based on inputs from my Professor, I plan to group zipcodes by the change in number of cameras. I plan to create 3 groups:
+- Zipcode where there was no change in the number of cameras
+- Zipcodes where number of cameras decreased 
+- Zipcodes where number of cameras increased 
+
+To keep the calculation simple, I plan to calculate the difference between 2014 and 2018. (Number of cameras were increased in 2018 from 150 to 162 and I am excited to see how the trend will look like. It will also help me understand whether these camera installations were warranted at the desired zipcodes or these resources could be better used elsewhere.)
+
+To first calculate the difference in number of cameras, I created a table visualization to help read the number of cameras per Zipcode per year. 
+
+![](Table.png)
+
+**Steps to recreate the chart**
+- As seen in the image, drag Violation Date to Columns and make sure it is Year. Drag Zipcodes to Rows. Click on Show Me button and select Table from list of chart types. Drag Number of Cameras to the middle of the table to fill table values. Now one can clearly see the number of cameras in each zipode by year. 
+- Right-click on Zipcodes and click on Show Filter. In the Filter card, right-click on Zipcode and select Edit Filter. From the dialog box, deslect null from Zipcodes. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ### Dashboard 3: Understanding difference between Violations in Park and School Zones
